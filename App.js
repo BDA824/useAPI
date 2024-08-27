@@ -34,7 +34,13 @@ export default function App() {
       <FlatList
         data={data}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <Text>Nombre: {item.name}</Text>}
+        renderItem={({ item }) => (
+          <View style={styles.itemContainer}>
+            <Text style={styles.itemText}>{item.name}</Text>
+          </View>
+        )}
+        style={styles.flatList} // Estilo para el contenedor de FlatList
+        contentContainerStyle={styles.flatListContent}
       />
     </View>
   );
@@ -43,6 +49,27 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '868686',
+    alignContent: 'center',
+    justifyContent: 'center'
+  },
+  flatListContent: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  itemContainer: {
+    backgroundColor: '#ffffff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderRadius: 10,
+    elevation: 2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+  },
+  itemText: {
+    fontSize: 18,
+    color: '00000',
   },
 });
